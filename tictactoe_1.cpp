@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string result(array<array<int, 3 >, 3> field){
+string result(const array<array<int, 3 >, 3> &field){
 	// Gibt aktuellen Zwischenstand als Bild zurück.
 	string heading = "Ergebnis:";
 	string newline = "\n";
@@ -25,7 +25,7 @@ string result(array<array<int, 3 >, 3> field){
 };
 
 
-string greet(array<array<int, 3 >, 3> field){
+string greet(const array<array<int, 3 >, 3> &field){
 	// Begrüßt Spieler und erklärt Funktionsweise des Spiels
 	string newline = "\n";
 	string a = "Hallo und herzlich willkommen beim Spiel Tic Tac Toe!\nDu bist Spieler 1, Spieler 2 ist der Computer!\nDas Spielfeld sieht wie folgt aus:";
@@ -34,7 +34,7 @@ string greet(array<array<int, 3 >, 3> field){
 };
 
 
-int check_won(array<array<int, 3>, 3> field){
+int check_won(const array<array<int, 3>, 3> &field){
 	// Prüft, ob ein Spieler gewonnen hat und gibt, falls dem so ist, eine entsprechende Nachricht aus.
 	for (int i = 0; i <= 2; ++i){
 		if (field[i][0] != 0 && field[i][0] == field[i][1] && field[i][1] == field[i][2])
