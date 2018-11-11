@@ -19,9 +19,9 @@ string result(const array<array<int, 3 >, 3> &field){
 	string border_type_1 = "| ";
 	string border_type_2 = " | ";
 	return (border_type_0 + heading + newline + border_type_0 + y0 + border_type_1 + y1 + border_type_1 + y2 + newline +
-			x0 + to_string(field[0][0]) + border_type_2 + to_string(field [0][1]) + border_type_2 + to_string(field[0][2]) + newline +
-			x1 + to_string(field[1][0]) + border_type_2 + to_string(field [1][1]) + border_type_2 + to_string(field[1][2]) + newline +
-			x2 + to_string(field[2][0]) + border_type_2 + to_string(field [2][1]) + border_type_2 + to_string(field[2][2]) + newline + newline);
+			x0 + to_string(field.at(0).at(0)) + border_type_2 + to_string(field.at(0).at(1)) + border_type_2 + to_string(field.at(0).at(2)) + newline +
+			x1 + to_string(field.at(1).at(0)) + border_type_2 + to_string(field.at(1).at(1)) + border_type_2 + to_string(field.at(1).at(2)) + newline +
+			x2 + to_string(field.at(2).at(0)) + border_type_2 + to_string(field.at(2).at(1)) + border_type_2 + to_string(field.at(2).at(2)) + newline + newline);
 };
 
 
@@ -37,13 +37,13 @@ string greet(const array<array<int, 3 >, 3> &field){
 int check_won(const array<array<int, 3>, 3> &field){
 	// Prüft, ob ein Spieler gewonnen hat und gibt, falls dem so ist, eine entsprechende Nachricht aus.
 	for (int i = 0; i <= 2; ++i){
-		if (field[i][0] != 0 && field[i][0] == field[i][1] && field[i][1] == field[i][2])
+		if (field.at(i).at(0) != 0 && field.at(i).at(0) == field.at(i).at(1) && field.at(i).at(1) == field.at(i).at(2))
 			return field[i][0];
-		if (field[0][i] != 0 && field[0][i] == field[1][i] && field[1][i] == field[2][i])
+		if (field.at(0).at(i) != 0 && field.at(0).at(i) == field.at(1).at(i) && field.at(1).at(i) == field.at(2).at(i))
 			return field[0][i];
-		if (field[0][0] != 0 && field[0][0] == field[1][1] && field[1][1] == field[2][2])
+		if (field.at(0).at(0) != 0 && field.at(0).at(0) == field.at(1).at(1) && field.at(1).at(1) == field.at(2).at(2))
 			return field[0][0];
-	}	if (field[2][0] != 0 && field[2][0] == field[1][1] && field[1][1] == field[0][2])
+	}	if (field.at(2).at(0) != 0 && field.at(2).at(0) == field.at(1).at(1) && field.at(1).at(1) == field.at(0).at(2))
 			return field[2][0];
 		return 0;
 };
@@ -70,7 +70,7 @@ int main(){
 			// Falls Nummer des Zuges (i) gerade, ist Spieler 1 an der Reihe.
 			if (i%2 == 0){
 				a = 3, b = 3;
-				while ((a != 0 && a != 1 && a != 2 || b != 0 && b != 1 && b != 2) || field[a][b] == 1 || field[a][b] == 2){
+				while ((a != 0 && a != 1 && a != 2 || b != 0 && b != 1 && b != 2) || field.at(a).at(b) == 1 || field.at(a).at(b) == 2){
 					cout << "Spieler 1, bitte treffe deine Wahl: " << endl;
 					cin >> a >> b;
 				}
@@ -85,7 +85,7 @@ int main(){
 			// Falls Nummer des Zuges (i) ungerade, ist Spieler 2 an der Reihe.	
 			else{
 				a = 3, b = 3;
-				while ((a != 0 && a != 1 && a != 2 || b != 0 && b != 1 && b != 2) || field [a][b] == 1 || field [a][b] == 2){
+				while ((a != 0 && a != 1 && a != 2 || b != 0 && b != 1 && b != 2) || field.at(a).at(b) == 1 || field.at(a).at(b) == 2){
 					a = ((rand() % 10)-1) / 3;
 					b = ((rand() % 10)-1) / 3;
 				}	
