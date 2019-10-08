@@ -1,2 +1,2 @@
 # TicTacToe
-Simple TicTacToe game written in C++.
+Simple TicTacToe comand line game.
